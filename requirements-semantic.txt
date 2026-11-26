@@ -1,0 +1,5 @@
+# Optional: enables `--retriever hybrid` (adds MiniLM embeddings to the lexical scores).
+# CPU-only torch keeps the install small:
+#   pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-semantic.txt
+sentence-transformers==6.3.0

@@ -1,0 +1,5 @@
+# Core: everything `python main.py` and `python validate.py` need (offline, no secrets).
+pydantic==2.14.4
+scikit-learn==1.9.1
+numpy==2.5.5
+pytest==9.2.0

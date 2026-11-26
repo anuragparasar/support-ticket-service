@@ -1,0 +1,448 @@
+{
+  "run": {
+    "components": {
+      "classifier": "rules",
+      "retriever": "hybrid",
+      "generator": "template"
+    },
+    "requested": {
+      "classifier": "rules",
+      "retriever": "hybrid",
+      "generator": "template"
+    },
+    "notes": [],
+    "article_topics": {
+      "A1": "deposit_issue",
+      "A2": "password_reset",
+      "A3": "withdrawal_issue",
+      "A4": "account_lock",
+      "A5": "trading_advice_request"
+    },
+    "warnings": [],
+    "summary": {
+      "tickets": 5,
+      "escalated": 1,
+      "fallbacks": 0,
+      "components": {
+        "classifier": "rules",
+        "retriever": "hybrid",
+        "generator": "template"
+      },
+      "notes": []
+    }
+  },
+  "tickets": [
+    {
+      "ticket_id": "T1",
+      "message": "I deposited by bank card two hours ago but my balance still shows zero. What should I check?",
+      "intent": {
+        "label": "deposit_issue",
+        "certainty": 1.0,
+        "component": "rules",
+        "scores": {
+          "deposit_issue": 7.0
+        },
+        "matched_terms": {
+          "deposit_issue": [
+            "deposited",
+            "shows zero",
+            "bank",
+            "balance"
+          ]
+        },
+        "advice_detected": false,
+        "rationale": null,
+        "fallback": null
+      },
+      "retrieval": {
+        "component": "hybrid",
+        "fallback": null,
+        "hits": [
+          {
+            "article_id": "A1",
+            "title": "Card deposit processing times",
+            "topic": "deposit_issue",
+            "score": 0.487241,
+            "components": {
+              "word": 0.567245,
+              "char": 0.312748,
+              "semantic": 0.548968
+            }
+          }
+        ]
+      },
+      "generation": {
+        "component": "template",
+        "fallback": null,
+        "repairs": []
+      },
+      "grounding": {
+        "grounded": true,
+        "score": 1.0,
+        "sentences": [
+          {
+            "sentence": "Card deposits are usually instant, but may be delayed by issuer checks, network issues, or pending review.",
+            "cited": [
+              "A1"
+            ],
+            "support": 1.0,
+            "ok": true
+          },
+          {
+            "sentence": "Please confirm successful payment, check transaction history, and wait up to the documented processing window before contacting us again.",
+            "cited": [
+              "A1"
+            ],
+            "support": 0.909,
+            "ok": true
+          }
+        ]
+      },
+      "confidence": {
+        "classifier_certainty": 1.0,
+        "retrieval_strength": 0.8859,
+        "grounding_score": 1.0,
+        "penalties": {},
+        "final": 0.9544
+      },
+      "escalation": {
+        "escalate": false,
+        "reasons": [
+          "confident, grounded and not policy-sensitive"
+        ]
+      },
+      "safety_flags": [
+        "account_specific_request"
+      ]
+    },
+    {
+      "ticket_id": "T2",
+      "message": "I forgot my password and I am not receiving the reset email.",
+      "intent": {
+        "label": "password_reset",
+        "certainty": 1.0,
+        "component": "rules",
+        "scores": {
+          "password_reset": 9.0
+        },
+        "matched_terms": {
+          "password_reset": [
+            "forgot my password",
+            "reset",
+            "password",
+            "email"
+          ]
+        },
+        "advice_detected": false,
+        "rationale": null,
+        "fallback": null
+      },
+      "retrieval": {
+        "component": "hybrid",
+        "fallback": null,
+        "hits": [
+          {
+            "article_id": "A2",
+            "title": "Password reset troubleshooting",
+            "topic": "password_reset",
+            "score": 0.540015,
+            "components": {
+              "word": 0.565474,
+              "char": 0.463954,
+              "semantic": 0.590459
+            }
+          }
+        ]
+      },
+      "generation": {
+        "component": "template",
+        "fallback": null,
+        "repairs": []
+      },
+      "grounding": {
+        "grounded": true,
+        "score": 1.0,
+        "sentences": [
+          {
+            "sentence": "If you do not receive a reset email, please confirm the registered email address, check spam folders, wait a few minutes, and retry.",
+            "cited": [
+              "A2"
+            ],
+            "support": 1.0,
+            "ok": true
+          },
+          {
+            "sentence": "Repeated failed attempts may trigger temporary rate limits.",
+            "cited": [
+              "A2"
+            ],
+            "support": 1.0,
+            "ok": true
+          }
+        ]
+      },
+      "confidence": {
+        "classifier_certainty": 1.0,
+        "retrieval_strength": 0.9818,
+        "grounding_score": 1.0,
+        "penalties": {},
+        "final": 0.9927
+      },
+      "escalation": {
+        "escalate": false,
+        "reasons": [
+          "confident, grounded and not policy-sensitive"
+        ]
+      },
+      "safety_flags": []
+    },
+    {
+      "ticket_id": "T3",
+      "message": "Why was my withdrawal declined after verification?",
+      "intent": {
+        "label": "withdrawal_issue",
+        "certainty": 0.9167,
+        "component": "rules",
+        "scores": {
+          "withdrawal_issue": 5.0
+        },
+        "matched_terms": {
+          "withdrawal_issue": [
+            "withdrawal",
+            "declined",
+            "verification"
+          ]
+        },
+        "advice_detected": false,
+        "rationale": null,
+        "fallback": null
+      },
+      "retrieval": {
+        "component": "hybrid",
+        "fallback": null,
+        "hits": [
+          {
+            "article_id": "A3",
+            "title": "Withdrawal review and declines",
+            "topic": "withdrawal_issue",
+            "score": 0.538147,
+            "components": {
+              "word": 0.491232,
+              "char": 0.470098,
+              "semantic": 0.757509
+            }
+          }
+        ]
+      },
+      "generation": {
+        "component": "template",
+        "fallback": null,
+        "repairs": []
+      },
+      "grounding": {
+        "grounded": true,
+        "score": 1.0,
+        "sentences": [
+          {
+            "sentence": "Withdrawals may be declined due to incomplete verification, mismatched payment method details, compliance review, or account restrictions.",
+            "cited": [
+              "A3"
+            ],
+            "support": 1.0,
+            "ok": true
+          }
+        ]
+      },
+      "confidence": {
+        "classifier_certainty": 0.9167,
+        "retrieval_strength": 0.9784,
+        "grounding_score": 1.0,
+        "penalties": {},
+        "final": 0.9581
+      },
+      "escalation": {
+        "escalate": true,
+        "reasons": [
+          "'withdrawal_issue' outcomes depend on account / compliance review"
+        ]
+      },
+      "safety_flags": [
+        "policy_sensitive",
+        "account_specific_request"
+      ]
+    },
+    {
+      "ticket_id": "T4",
+      "message": "Can you tell me which asset will go up today so I can make profit?",
+      "intent": {
+        "label": "trading_advice_request",
+        "certainty": 1.0,
+        "component": "rules",
+        "scores": {
+          "trading_advice_request": 11.0
+        },
+        "matched_terms": {
+          "trading_advice_request": [
+            "which asset",
+            "go up",
+            "so i can make profit",
+            "profit",
+            "today"
+          ]
+        },
+        "advice_detected": true,
+        "rationale": null,
+        "fallback": null
+      },
+      "retrieval": {
+        "component": "hybrid",
+        "fallback": null,
+        "hits": [
+          {
+            "article_id": "A5",
+            "title": "No investment or trading advice",
+            "topic": "trading_advice_request",
+            "score": 0.344572,
+            "components": {
+              "word": 0.45523,
+              "char": 0.17713,
+              "semantic": 0.31909
+            }
+          }
+        ]
+      },
+      "generation": {
+        "component": "template",
+        "fallback": null,
+        "repairs": []
+      },
+      "grounding": {
+        "grounded": true,
+        "score": 1.0,
+        "sentences": [
+          {
+            "sentence": "I'm sorry, but we're not able to provide market predictions, profit guarantees, or recommendations on specific assets.",
+            "cited": [
+              "A5"
+            ],
+            "support": 0.583,
+            "ok": true
+          },
+          {
+            "sentence": "If it helps, we can point you to general educational resources about how trading works, where available.",
+            "cited": [
+              "A5"
+            ],
+            "support": 0.625,
+            "ok": true
+          }
+        ]
+      },
+      "confidence": {
+        "classifier_certainty": 1.0,
+        "retrieval_strength": 0.6265,
+        "grounding_score": 1.0,
+        "penalties": {},
+        "final": 0.8506
+      },
+      "escalation": {
+        "escalate": false,
+        "reasons": [
+          "handled safely by policy refusal"
+        ]
+      },
+      "safety_flags": [
+        "advice_request"
+      ]
+    },
+    {
+      "ticket_id": "T5",
+      "message": "My account was locked after too many login attempts. What do I do now?",
+      "intent": {
+        "label": "account_lock",
+        "certainty": 1.0,
+        "component": "rules",
+        "scores": {
+          "account_lock": 8.0
+        },
+        "matched_terms": {
+          "account_lock": [
+            "locked",
+            "too many signin attempts",
+            "attempts",
+            "signin"
+          ]
+        },
+        "advice_detected": false,
+        "rationale": null,
+        "fallback": null
+      },
+      "retrieval": {
+        "component": "hybrid",
+        "fallback": null,
+        "hits": [
+          {
+            "article_id": "A4",
+            "title": "Account lock after failed sign-in attempts",
+            "topic": "account_lock",
+            "score": 0.57408,
+            "components": {
+              "word": 0.592879,
+              "char": 0.518307,
+              "semantic": 0.610743
+            }
+          }
+        ]
+      },
+      "generation": {
+        "component": "template",
+        "fallback": null,
+        "repairs": []
+      },
+      "grounding": {
+        "grounded": true,
+        "score": 1.0,
+        "sentences": [
+          {
+            "sentence": "For security reasons, repeated failed sign-in attempts can temporarily lock the account.",
+            "cited": [
+              "A4"
+            ],
+            "support": 1.0,
+            "ok": true
+          },
+          {
+            "sentence": "Please wait for the cooldown period or use the secure recovery flow.",
+            "cited": [
+              "A4"
+            ],
+            "support": 1.0,
+            "ok": true
+          },
+          {
+            "sentence": "Please avoid sharing account-specific details in unsecured channels.",
+            "cited": [
+              "A4"
+            ],
+            "support": 1.0,
+            "ok": true
+          }
+        ]
+      },
+      "confidence": {
+        "classifier_certainty": 1.0,
+        "retrieval_strength": 1.0,
+        "grounding_score": 1.0,
+        "penalties": {},
+        "final": 1.0
+      },
+      "escalation": {
+        "escalate": false,
+        "reasons": [
+          "confident, grounded and not policy-sensitive"
+        ]
+      },
+      "safety_flags": []
+    }
+  ]
+}
